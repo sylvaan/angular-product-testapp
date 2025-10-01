@@ -6,6 +6,11 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent {}
+export class AppComponent {
+  title = 'angular-unictive';
+  appVersion = '1.0.0';
+  currentYear = new Date().getFullYear();
+  githubName = 'Sylvaan';
+}

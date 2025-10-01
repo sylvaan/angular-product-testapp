@@ -1,1 +1,8 @@
-<router-outlet></router-outlet>
+<div class="relative min-h-screen">
+  <router-outlet></router-outlet>
+
+  <footer class="w-full text-center py-4 text-gray-500 text-xs mt-2">
+    <p>Version {{ appVersion }}</p>
+    <p>&copy; {{ currentYear }} {{ githubName }}</p>
+  </footer>
+</div>
