@@ -51,7 +51,7 @@
         <h2 class="col-span-3 text-2xl font-bold mb-4">Product List</h2>
         <a
           *ngFor="let product of products"
-          [routerLink]="['/product-detail', product.id]"
+          [routerLink]="['/detail', product.id]"
           class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center space-y-2 cursor-pointer hover:shadow-lg transition-shadow duration-200"
         >
           <img
