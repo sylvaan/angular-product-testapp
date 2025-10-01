@@ -10,7 +10,7 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'angular-unictive';
-  appVersion = '1.0.1';
+  appVersion = '1.0.2';
   currentYear = new Date().getFullYear();
   githubName = 'Sylvaan';
 }
