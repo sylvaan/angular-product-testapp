@@ -1,0 +1,17 @@
+<div
+  [ngClass]="{
+    'bg-green-500': type === 'success',
+    'bg-red-500': type === 'error'
+  }"
+  class="popup-container"
+>
+  <div class="popup-content">
+    <p class="text-sm font-semibold">{{ message }}</p>
+    <button
+      (click)="close.emit()"
+      class="close-button text-xs ml-2 px-2 py-1 bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-colors duration-200"
+    >
+      X
+    </button>
+  </div>
+</div>
