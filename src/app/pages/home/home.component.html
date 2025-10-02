@@ -2,7 +2,7 @@
   class="flex flex-col items-center justify-start min-h-screen bg-gray-100 p-8"
 >
   <div
-    class="bg-white p-8 rounded-lg shadow-md w-full max-w-lg mb-8 text-center"
+    class="bg-white p-8 rounded-lg shadow-md w-full max-w-4xl mb-8 text-center"
   >
     <div class="flex items-center justify-between mb-4">
       <h1 class="text-3xl font-bold">Welcome, {{ user?.firstName }}!</h1>
@@ -18,7 +18,7 @@
     </p>
   </div>
 
-  <div class="w-full max-w-lg">
+  <div class="w-full max-w-4xl">
     <app-loading *ngIf="isLoading"></app-loading>
     <app-error
       *ngIf="isError"
@@ -47,23 +47,27 @@
         </button>
       </div>
 
-      <div class="grid grid-cols-3 gap-4 mt-8">
-        <h2 class="col-span-3 text-2xl font-bold mb-4">Product List</h2>
-        <a
-          *ngFor="let product of products"
-          [routerLink]="['/detail', product.id]"
-          class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center space-y-2 cursor-pointer hover:shadow-lg transition-shadow duration-200"
-        >
-          <img
-            [src]="product.thumbnail"
-            alt="{{ product.title }}"
-            class="w-full h-32 rounded-md object-cover"
-          />
-          <div class="flex-1 text-center">
-            <h3 class="font-bold text-sm text-gray-800">{{ product.title }}</h3>
-            <p class="text-gray-500 text-sm mt-1">${{ product.price }}</p>
-          </div>
-        </a>
+      <div class="mt-8">
+        <h2 class="text-2xl font-bold mb-4">Product List</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          <a
+            *ngFor="let product of products"
+            [routerLink]="['/detail', product.id]"
+            class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center space-y-2 cursor-pointer hover:shadow-lg transition-shadow duration-200"
+          >
+            <img
+              [src]="product.thumbnail"
+              alt="{{ product.title }}"
+              class="w-full h-32 rounded-md object-cover"
+            />
+            <div class="flex-1 text-center">
+              <h3 class="font-bold text-sm text-gray-800">
+                {{ product.title }}
+              </h3>
+              <p class="text-gray-500 text-sm mt-1">${{ product.price }}</p>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </div>

@@ -9,7 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { PopupComponent } from '../../components/popup/popup.component';
-import { LoadingComponent } from '../../components/loading/loading.component'; // <-- New Import
+import { LoadingComponent } from '../../components/loading/loading.component';
 
 @Component({
   selector: 'app-login',
@@ -19,18 +19,17 @@ import { LoadingComponent } from '../../components/loading/loading.component'; /
     ReactiveFormsModule,
     PopupComponent,
     LoadingComponent,
-  ], // <-- Add LoadingComponent
+  ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
-  // Properties for UI state
   showPopup = false;
   popupMessage = '';
   popupType: 'success' | 'error' = 'success';
-  isLoading = false; // <-- New property for loading state
+  isLoading = false;
 
   constructor(
     private fb: FormBuilder,
@@ -47,10 +46,10 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     if (this.loginForm.valid) {
-      this.isLoading = true; // <-- Set to true on submission
+      this.isLoading = true;
       this.authService.login(this.loginForm.value).subscribe({
-        next: (response) => {
-          this.isLoading = false; // <-- Set to false on success
+        next: () => {
+          this.isLoading = false;
           this.showPopupMessage(
             '✅ Login successful! Redirecting...',
             'success'
@@ -60,7 +59,7 @@ export class LoginComponent implements OnInit {
           }, 2000);
         },
         error: (err) => {
-          this.isLoading = false; // <-- Set to false on error
+          this.isLoading = false;
           console.error('Login failed:', err);
           this.showPopupMessage(
             '❌ Login failed. Please check your credentials.',

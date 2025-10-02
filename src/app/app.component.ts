@@ -9,8 +9,8 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'angular-unictive';
-  appVersion = '1.0.2';
+  title = 'angular-testapp';
+  appVersion = '1.0.3';
   currentYear = new Date().getFullYear();
   githubName = 'Sylvaan';
 }
