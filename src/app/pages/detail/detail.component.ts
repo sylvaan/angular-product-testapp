@@ -4,11 +4,18 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ProductService } from '../../services/products.service';
 import { LoadingComponent } from '../../components/loading/loading.component';
 import { ErrorComponent } from '../../components/error/error.component';
+import { CapitalizePipe } from 'src/app/pipes/capitalize.pipe';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [CommonModule, LoadingComponent, ErrorComponent, RouterModule],
+  imports: [
+    CommonModule,
+    LoadingComponent,
+    ErrorComponent,
+    RouterModule,
+    CapitalizePipe,
+  ],
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.css'],
 })

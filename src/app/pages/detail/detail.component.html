@@ -2,10 +2,16 @@
   class="flex flex-col items-center justify-start min-h-screen bg-gray-100 p-8"
 >
   <div class="w-full max-w-2xl bg-white p-8 rounded-lg shadow-md">
-    <div class="mb-4">
-      <a routerLink="/home" class="text-blue-600 hover:underline">
-        < Back to Products
+    <div class="mb-6 flex justify-between items-center">
+      <a
+        routerLink="/home"
+        class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded transition-colors duration-200 focus:outline-none"
+      >
+        Back
       </a>
+      <h1 class="text-3xl font-bold md:hidden text-center">
+        {{ product?.title }}
+      </h1>
     </div>
 
     <app-loading *ngIf="isLoading"></app-loading>
@@ -16,32 +22,49 @@
 
     <div
       *ngIf="product && !isLoading"
-      class="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8"
+      class="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-12"
     >
-      <div class="md:w-1/2">
-        <h2 class="text-xl font-bold mb-4">Images</h2>
-        <div class="grid grid-cols-2 gap-4">
-          <img
-            *ngFor="let image of product.images"
-            [src]="image"
-            class="w-full h-auto rounded-lg object-cover shadow-sm"
-          />
-        </div>
+      <div class="md:w-1/2 flex flex-col items-center">
+        <img
+          [src]="product.images[0]"
+          class="w-full h-auto max-h-96 rounded-lg object-contain shadow-sm mb-4 transition-transform hover:scale-105"
+        />
       </div>
 
       <div class="md:w-1/2">
-        <h1 class="text-3xl font-bold mb-2">{{ product.title }}</h1>
-        <p class="text-gray-600 text-lg mb-4">{{ product.category }}</p>
-        <p class="text-3xl font-bold text-blue-600 mb-4">
-          ${{ product.price }}
+        <h1 class="text-4xl font-extrabold mb-2 hidden md:block">
+          {{ product.title }}
+        </h1>
+        <p class="text-gray-600 text-lg mb-2">
+          {{ product.category | capitalize }}
         </p>
 
-        <p class="text-gray-700 mb-4">{{ product.description }}</p>
+        <div class="flex items-baseline mb-6">
+          <p class="text-4xl font-extrabold text-blue-600">
+            ${{ product.price }}
+          </p>
+        </div>
 
-        <div class="text-sm text-gray-500 space-y-1">
-          <p><strong>Brand:</strong> {{ product.brand }}</p>
+        <p class="text-gray-700 mb-6">{{ product.description }}</p>
+
+        <div class="mt-8 text-sm text-gray-500 space-y-2">
+          <p *ngIf="product.brand">
+            <strong>Brand:</strong> {{ product.brand }}
+          </p>
           <p><strong>Stock:</strong> {{ product.stock }}</p>
           <p><strong>Rating:</strong> {{ product.rating }}</p>
+        </div>
+
+        <div class="mt-6">
+          <h4 class="text-sm font-bold mb-2">Tags</h4>
+          <div class="flex flex-wrap gap-2">
+            <span
+              *ngFor="let tag of product.tags"
+              class="bg-gray-200 text-gray-700 text-xs font-semibold px-2 py-1 rounded-full"
+            >
+              {{ tag }}
+            </span>
+          </div>
         </div>
       </div>
     </div>
